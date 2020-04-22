@@ -1,0 +1,22 @@
+<Test TestName="si-3-10/tcs-paxos-si-10-system-s3-0-1">
+  <Configuration>
+    <SystemSize>3</SystemSize>
+    <QuorumSize>2</QuorumSize>
+    <ServerIDs>
+      <ID>8080</ID>
+      <ID>8081</ID>
+      <ID>8082</ID>
+    </ServerIDs>
+    <FailurePhaseOne>0</FailurePhaseOne>
+    <FailurePhaseTwo>1</FailurePhaseTwo>
+  </Configuration>
+  <TestCase CaseID="1">
+    <TestValues>
+      <ClientPropose>M1</ClientPropose>
+    </TestValues>
+    <TestOracles>
+      <Leader>8080</Leader>
+      <Response>M1</Response>
+    </TestOracles>
+  </TestCase>
+</Test>

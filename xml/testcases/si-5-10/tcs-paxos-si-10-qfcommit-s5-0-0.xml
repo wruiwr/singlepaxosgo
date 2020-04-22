@@ -1,0 +1,68 @@
+<Test TestName="si-5-10/tcs-paxos-si-10-qfcommit-s5-0-0">
+  <Configuration>
+    <SystemSize>5</SystemSize>
+    <QuorumSize>3</QuorumSize>
+    <ServerIDs>
+      <ID>8080</ID>
+      <ID>8081</ID>
+      <ID>8082</ID>
+      <ID>8083</ID>
+      <ID>8084</ID>
+    </ServerIDs>
+    <FailurePhaseOne>0</FailurePhaseOne>
+    <FailurePhaseTwo>0</FailurePhaseTwo>
+  </Configuration>
+  <TestCase CaseID="1">
+   <TestValues>
+    <EmptyMsg></EmptyMsg>
+    <EmptyMsg></EmptyMsg>
+    <EmptyMsg></EmptyMsg>
+    <EmptyMsg></EmptyMsg>
+    <EmptyMsg></EmptyMsg>
+   </TestValues>
+   <TestOracles>
+    <Quorum>true</Quorum>
+    <EmptyMsg></EmptyMsg>
+   </TestOracles>
+  </TestCase>
+  <TestCase CaseID="2">
+   <TestValues>
+    <EmptyMsg></EmptyMsg>
+    <EmptyMsg></EmptyMsg>
+    <EmptyMsg></EmptyMsg>
+    <EmptyMsg></EmptyMsg>
+   </TestValues>
+   <TestOracles>
+    <Quorum>true</Quorum>
+    <EmptyMsg></EmptyMsg>
+   </TestOracles>
+  </TestCase>
+  <TestCase CaseID="3">
+   <TestValues>
+    <EmptyMsg></EmptyMsg>
+    <EmptyMsg></EmptyMsg>
+    <EmptyMsg></EmptyMsg>
+   </TestValues>
+   <TestOracles>
+    <Quorum>true</Quorum>
+    <EmptyMsg></EmptyMsg>
+   </TestOracles>
+  </TestCase>
+  <TestCase CaseID="4">
+   <TestValues>
+    <EmptyMsg></EmptyMsg>
+    <EmptyMsg></EmptyMsg>
+   </TestValues>
+   <TestOracles>
+    <Quorum>false</Quorum>
+   </TestOracles>
+  </TestCase>
+  <TestCase CaseID="5">
+   <TestValues>
+    <EmptyMsg></EmptyMsg>
+   </TestValues>
+   <TestOracles>
+    <Quorum>false</Quorum>
+   </TestOracles>
+  </TestCase>
+</Test>

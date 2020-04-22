@@ -1,0 +1,17 @@
+ <Test TestName="LeaderChangeTest" SystemSize="3" QuorumSize="2">
+   <TestCase CaseID="1">
+     <TestValue>
+       <ServerIDs>
+         <ID>8080</ID>
+         <ID>8081</ID>
+         <ID>8082</ID>
+       </ServerIDs>
+     </TestValue>
+     <TestOracles>
+       <ExpectLeaders>
+         <Leader>8080</Leader>
+         <Leader>8081</Leader>
+       </ExpectLeaders>
+     </TestOracles>
+   </TestCase>
+ </Test>
