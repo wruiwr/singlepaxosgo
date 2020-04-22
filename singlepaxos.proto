@@ -1,0 +1,74 @@
+syntax = "proto3";
+
+import "github.com/relab/gorums/gorums.proto";
+import "github.com/gogo/protobuf/gogoproto/gogo.proto";
+
+option (gogoproto.equal_all) = true;
+
+package singlepaxos;
+
+service SinglePaxos {
+	rpc Ping(Heartbeat) returns (Heartbeat) {}
+
+	rpc Prepare(PrepareMsg) returns (PromiseMsg) {
+		option (gorums.qc) = true;
+		option (gorums.qf_with_req)	= true;
+	}
+
+	rpc Accept(AcceptMsg) returns (LearnMsg) {
+		option (gorums.qc) = true;
+	}
+
+	rpc Commit(LearnMsg) returns (Empty) {
+		option (gorums.qc) = true;
+	}
+
+	rpc ClientHandle(Value) returns (Response) {
+		option (gorums.qc) = true;
+	}
+}
+
+message Heartbeat {
+	uint32 id = 1;
+}
+
+message Round {
+	uint32 rnd = 1;
+}
+
+message Value {
+	string clientRequest = 1;
+}
+
+message Response {
+	string clientResponse = 1;
+}
+
+// PrepareMsg is sent by the Proposer to start a new round, rnd.
+message PrepareMsg {
+	uint32 rnd = 1;
+}
+
+// PromiseMsg is the reply from an Acceptor to the Proposer in response to a PrepareMsg.
+// The Acceptor will only respond if the PrepareMsg.rnd > Acceptor.rnd.
+message PromiseMsg {
+	uint32 rnd = 1;
+	uint32 vrnd = 2;
+	Value vval = 3;
+}
+
+// AcceptMsg is sent by the Proposer, asking the Acceptors to lock-in the value, val.
+// If AcceptMsg.rnd < Acceptor.rnd, the message will be ignored.
+message AcceptMsg {
+	uint32 rnd = 1;
+	Value val = 2;
+}
+
+// LearnMsg is sent by an Acceptor to the Proposer, if the Acceptor agreed to lock-in the value, val.
+// The LearnMsg is also sent by the Proposer in a Commit.
+message LearnMsg {
+	uint32 rnd = 1;
+	Value val = 2;
+}
+
+message Empty {}
